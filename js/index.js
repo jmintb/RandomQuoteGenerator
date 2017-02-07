@@ -1,24 +1,30 @@
+var authorTextLength;
 
-$(document).ready(function(){
+$(document).ready(function() {
 
+  authorTextLength  = $("#author-text").html().length;
 
-$("#new-quote-btn").on("click", function(){
-  console.log("test");
+  updateQuote();
 
-  printTitle();
+    $("#new-quote-btn").on("click", function() {
+        updateQuote();
+    });
+
 });
 
+function updateQuote(quote) {
 
+    QuoteApi().getRandomTitle(function(quote) {
+        console.log("quote: " + quote.length+" "+authorTextLength);
 
+        if(quote.length+authorTextLength > 140){
+          updateQuote();
+        }  else {
+          console.log("success: "+quote.length+" "+authorTextLength)
+            $("#quote-text").html(quote);
+        }
 
-});
-function printTitle(){
+    });
 
-  QuoteApi().getRandomTitle(function(title){
-    console.log("title: "+title[0]);
-  },
-   function(msg){
-    console.log(msg);
-  });
 
 };
