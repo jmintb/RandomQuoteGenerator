@@ -14,5 +14,34 @@ html, body{
 
 .inner-div{
   border: solid 5px tomato;
+  max-width: 500px;
 
+
+}
+
+#quote-text{
+  margin: 10px;
+}
+
+#author-text{
+  margin: 10px;
+}
+
+.glyphicon-refresh-animate{
+  animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+}
+@-webkit-keyframes spin2 {
+    from {-webkit-transform: scale(1) rotate(0deg);}
+    to {-webkit-transform: scale(1) rotate(360deg);}
+}
+
+@keyframes spin {
+    from {transform: scale(1) rotate(0deg);}
+    to {transform: scale(1) rotate(360deg);}
+}
+
+#new-quote-btn{
+
+  margin: 10px;
 }
