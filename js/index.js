@@ -31,11 +31,12 @@ $(document).keypress(function(key){
 function updateQuote() {
 
     toggleLoadIcon(true);
-
+        console.log("tweet: "+$(".twitter-share-button").html());
     if (quoteBuffer.length < 1) {
         refillBuffer(true);
     } else {
         usedQuotes.push(quoteBuffer[quoteBuffer.length - 1]);
+        updateTweet(quoteBuffer[0]);
         $("#quote-text").html(quoteBuffer.shift());
         toggleLoadIcon(false);
 
@@ -60,6 +61,8 @@ function refillBuffer(shouldUpdateQuote) {
         isWaitingForResponse = false;
         if (shouldUpdateQuote || $("#load-icon").hasClass("glyphicon")) {
             $("#quote-text").html(quote);
+            updateTweet(quote);
+            $("#tweet-btn").attr("data-text", "this is a test");
             shouldUpdateQuote = false;
             toggleLoadIcon(false);
         } else {
@@ -83,6 +86,24 @@ function refillBuffer(shouldUpdateQuote) {
 
 
 };
+
+
+function updateTweet(quote){
+  var tweetBtn = document.querySelector(".twitter-share-button");
+  var anchor = document.createElement("a");
+
+  anchor.setAttribute("href", "https://twitter.com/share");
+  anchor.setAttribute("class", "twitter-share-button");
+  anchor.setAttribute("data-text", quote);
+  anchor.setAttribute("id", "twitter");
+  anchor.setAttribute("data-show-count", "true");
+  anchor.innerHTML = "Tweet";
+  tweetBtn.parentNode.replaceChild(anchor, tweetBtn);
+  twttr.widgets.load();
+  var html = $("#tweet-btn").html();
+
+  console.log("html: "+html);
+}
 
 
 
