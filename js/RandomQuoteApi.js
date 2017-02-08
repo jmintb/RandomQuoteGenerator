@@ -9,12 +9,15 @@ var QuoteApi = function() {
         });
     };
 
-    qa.getRandomTitleArray = function(success){
+    qa.getRandomTitleArray = function(success, unusableQuote){
 
-      for(var i = quoteBuffer.length; i < 100; i++){
+
+
         $.get(API_URL, function(data, status) {
-          if(data.message.length>111 || quoteBuffer.indexOf(data.message) !== -1 || usedQuotes.indexOf(data.message) !== -1){
-            i--;
+
+          if(data.message.length > 111 || quoteBuffer.indexOf(data.message) !== -1 ){
+            console.log("unusableQuote: "+data.message);
+           unusableQuote()
           }else {
 
             success(data.message)
@@ -22,7 +25,7 @@ var QuoteApi = function() {
 
           }
         });
-      };
+
 
     };
 

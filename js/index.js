@@ -2,6 +2,8 @@ var authorTextLength;
 var quoteBuffer = [];
 var usedQuotes = [];
 var loadClasses = ("glyphicon glyphicon-refresh glyphicon-refresh-animate");
+var isWaitingForResponse = false;
+var bufferSize = 20;
 
 $(document).ready(function() {
 
@@ -9,7 +11,6 @@ $(document).ready(function() {
 
     updateQuote();
     $("#new-quote-btn").on("click", function() {
-
         $("#new-quote-btn").blur();
         if (!$("#load-icon").hasClass("glyphicon")) {
             updateQuote();
@@ -18,21 +19,32 @@ $(document).ready(function() {
 
 });
 
+$(document).keypress(function(key){
+  if(key.which == 32){
+    if (!$("#load-icon").hasClass("glyphicon")) {
+        updateQuote();
+    }
+  }
+
+});
+
 function updateQuote() {
-    console.log("update quote")
+
     toggleLoadIcon(true);
 
     if (quoteBuffer.length < 1) {
         refillBuffer(true);
     } else {
         usedQuotes.push(quoteBuffer[quoteBuffer.length - 1]);
-        $("#quote-text").html(quoteBuffer.pop());
+        $("#quote-text").html(quoteBuffer.shift());
         toggleLoadIcon(false);
 
-        if(quoteBuffer.length < 20){
+        if(quoteBuffer.length < bufferSize){
           refillBuffer(false);
         }
     }
+
+
 };
 
 function refillBuffer(shouldUpdateQuote) {
@@ -41,20 +53,34 @@ function refillBuffer(shouldUpdateQuote) {
         usedQuotes = [];
     }
 
-    console.log("refillBuller: " + quoteBuffer.length);
-
+    if(!isWaitingForResponse){
+      isWaitingForResponse = true;
     QuoteApi().getRandomTitleArray(function(quote) {
+
+        isWaitingForResponse = false;
         if (shouldUpdateQuote || $("#load-icon").hasClass("glyphicon")) {
             $("#quote-text").html(quote);
             shouldUpdateQuote = false;
             toggleLoadIcon(false);
         } else {
-          console.log("push: "+quoteBuffer.length);
+
           quoteBuffer.push(quote);
+          console.log(quoteBuffer.length);
+        }
+
+        if(quoteBuffer.length < bufferSize){
+          refillBuffer(false);
         }
 
 
+    }, function(){
+      isWaitingForResponse = false;
+      refillBuffer(false);
+
     });
+  }
+
+
 
 };
 
