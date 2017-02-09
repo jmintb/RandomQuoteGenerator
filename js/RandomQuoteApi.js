@@ -11,10 +11,6 @@ var QuoteApi = function() {
             success(data.message)
           }
         });
-
-
     };
-
-
     return qa;
 };
