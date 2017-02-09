@@ -9,12 +9,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script src="js/jquery.textfill.js"></script>
     <script src="js/RandomQuoteApi.js"></script>
     <script src="js/index.js"></script>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
 
 
 
@@ -23,36 +23,37 @@
 
 <!-- main ui container -->
 
-<body >
+<body>
 
 
-  <div class=" valign-wrapper section no-pad-bot background-div" id="index-banner">
-    <div class="container center">
-      <br><br>
-    <div class="card-panel">
-      <h3 id="quote-text" class="light-blue-text center">
-        Wrong!
-      </h3>
-      <div id="load-animation-div" class="progress hide">
-      <div class="indeterminate"></div>
-      </div>
-      <h5 id="author-text" >
-        -  Donald J Trump
-      </h5>
-    </div>
-    <div class="row center">
+    <div class=" valign-wrapper section no-pad-bot background-div" id="index-banner">
+        <div class="container center" style="height: 80%">
+            <br><br>
+            <div id="quote-card" class="card-panel " style="">
+                <div id="quote-container" class="valign-wrapper" style="height: 80%">
+                    <span id="quote-text" class="light-blue-text ">Wrong!</span>
+                </div>
+                <h5 id="author-text" class="">-  Donald J Trump</h5>
+                <div id="load-animation-div" class="progress hide">
+                    <div class="indeterminate"></div>
+                </div>
 
-        <button id="new-quote-btn" class="btn btn-primary">
+            </div>
+            <div class="row center">
+
+                <button id="new-quote-btn" class="btn btn-primary">
                 New quote!
                 </button>
 
-        <a id="tweet-anchor" class="btn waves-effect waves-light blue" target="_blank" href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                <a id="tweet-anchor" class="btn waves-effect waves-light blue" target="_blank" href="https://twitter.com/share" class="twitter-share-button">
+                    <img id="twitter-icon" class="img-responsive" src="http://www.iconsdb.com/icons/preview/white/twitter-xxl.png" /> Tweet
+                </a>
 
-      </div>
-      <br><br>
+            </div>
 
+
+        </div>
     </div>
-  </div>
 
 
 

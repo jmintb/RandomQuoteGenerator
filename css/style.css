@@ -4,20 +4,27 @@ html, body{
 
 .background-div{
   width: 100%;
-  height: 100%;
+  height: 50%;
 
 
 }
 
-.flex-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+
+#quote-card{
+
+height:90%;
+margin: 0 auto;
 }
 
-.inner-div{
+#quote-container{
 
+  height: 80%
+}
+
+#quote-text{
+  display: inline;
+  vertical-align: text-bottom;
 }
 
 #tweet-anchor{
@@ -44,27 +51,14 @@ a:hover{
   text-decoration: inherit;
 }
 
-#quote-text{
-  margin: 10px;
-}
 
 #author-text{
   margin: 10px;
 }
 
-
-.glyphicon-refresh-animate{
-  animation: spin .7s infinite linear;
-  -webkit-animation: spin2 .7s infinite linear;
-}
-@-webkit-keyframes spin2 {
-    from {-webkit-transform: scale(1) rotate(0deg);}
-    to {-webkit-transform: scale(1) rotate(360deg);}
-}
-
-@keyframes spin {
-    from {transform: scale(1) rotate(0deg);}
-    to {transform: scale(1) rotate(360deg);}
+#twitter-icon{
+  height: 50%;
+  display: inline;
 }
 
 #new-quote-btn{

@@ -8,6 +8,7 @@ $(document).ready(function() {
   var authorTextLength;
 
     authorTextLength = $("#author-text").html().length;
+    updateFontSize();
 
     updateQuote();
     updateOnBtnClicked();
@@ -16,8 +17,7 @@ $(document).ready(function() {
 
     function updateQuote() {
 
-
-        if (quoteBuffer.length < 1) {
+      if (quoteBuffer.length < 1) {
             toggleLoadIcon(true);
             refillBuffer(true);
         } else {
@@ -31,6 +31,8 @@ $(document).ready(function() {
             }
         }
 
+        updateFontSize();
+
 
     };
 
@@ -39,6 +41,7 @@ $(document).ready(function() {
           $("#new-quote-btn").blur();
           if (!$("#load-icon").hasClass("glyphicon")) {
               updateQuote();
+
           }
       });
     };
@@ -58,7 +61,6 @@ $(document).ready(function() {
     function preventTweetBtnFromKeepingFocus(){
 
           $("#tweet-anchor").focus( function(){
-            console.log("tweet clicked");
             $("#tweet-anchor").blur();
           });
     }
@@ -79,11 +81,14 @@ $(document).ready(function() {
                     $("#quote-text").html(quote);
                     updateTweet(quote);
                     shouldUpdateQuote = false;
+                    updateFontSize();
+
 
                 } else {
                     toggleLoadIcon(false);
                     quoteBuffer.push(quote);
                     console.log(quoteBuffer.length);
+
                 }
 
                 if (quoteBuffer.length < bufferSize) {
@@ -107,17 +112,13 @@ $(document).ready(function() {
 
         var tweetBtn = document.querySelector(".twitter-share-button");
         var quoteFiltered = quote.replace("—", "-");
-        console.log("filtered: "+quoteFiltered+"  "+quote);
         $("#tweet-anchor").attr("href", "http://twitter.com/share?text="+String(quoteFiltered)+" -  Donald J Trump");
-        console.log("update twitter btn");
 
     }
 
 
 
-
     function toggleLoadIcon(showIcon) {
-        console.log("showIcon: "+showIcon);
         if (showIcon) {
             $("#load-animation-div").removeClass("hide");
         } else {
@@ -129,3 +130,18 @@ $(document).ready(function() {
 
 
 });
+
+function updateFontSize(){
+  $("#quote-container").textfill({
+    success: function(){
+      console.log("resize succes");
+    },
+    fail: function(){
+      console.log("resize failed");
+
+    }
+  });
+}
+
+
+$(window).resize(updateFontSize);
