@@ -2,10 +2,14 @@
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <script src="js/RandomQuoteApi.js"></script>
     <script src="js/index.js"></script>
 
@@ -16,30 +20,37 @@
 <!-- main ui container -->
 
 <body>
-    <div class=" background-div container">
+    <div class=" flex-container background-div container ">
 
         <!-- text and button container.-->
-        <div class="inner-div">
+        <div class="   inner-div card-panel">
 
-            <h3 id="quote-text">
+            <h3 id="quote-text" class="light-blue-text">
         Wrong!
       </h3>
 
             <h5 id="author-text">
       -  Donald J Trump
     </h5>
-            <button id="new-quote-btn" class="btn btn-primary">
-              <span id="load-icon" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-                New quote!
-                </button>
 
-            <div id="tweet-btn">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-text="test"  data-show-count="true">Tweet</a>
-          </div>
+    <div id="load-animation-div" class="progress hide">
+      <div class="indeterminate"></div>
+    </div>
+
 
         </div>
 
 
+
     </div>
+
+    <div class="center ">
+        <button id="new-quote-btn" class="btn btn-primary">
+                New quote!
+                </button>
+
+        <a id="tweet-anchor" class="btn waves-effect waves-light blue" target="_blank" href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    </div>
+
 
 </body>
