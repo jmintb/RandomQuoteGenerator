@@ -4,7 +4,7 @@ html, body{
 
 .background-div{
   width: 100%;
-  height: 50%;
+  height: 100%;
 
 
 }
@@ -17,7 +17,6 @@ html, body{
 }
 
 .inner-div{
-  max-width: 500px;
 
 
 }
